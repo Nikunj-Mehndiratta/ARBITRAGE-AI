@@ -1,0 +1,37 @@
+{
+  "source": "Yahoo Finance via the yfinance Python package",
+  "yfinance_version": "1.8.0",
+  "retrieved_at_utc": "2026-11-14 22:05:54",
+  "interval": "1d",
+  "requested_start": "2010-01-01",
+  "requested_end": null,
+  "price_field_used": "adj_close (split- and dividend-adjusted)",
+  "tickers": {
+    "KO": {
+      "rows": 4243,
+      "first_date": "2010-01-04",
+      "last_date": "2026-11-13"
+    },
+    "PEP": {
+      "rows": 4243,
+      "first_date": "2010-01-04",
+      "last_date": "2026-11-13"
+    },
+    "XOM": {
+      "rows": 4243,
+      "first_date": "2010-01-04",
+      "last_date": "2026-11-13"
+    },
+    "CVX": {
+      "rows": 4243,
+      "first_date": "2010-01-04",
+      "last_date": "2026-11-13"
+    },
+    "SPY": {
+      "rows": 4243,
+      "first_date": "2010-01-04",
+      "last_date": "2026-11-13"
+    }
+  },
+  "note": "Research dataset for a paper-trading prototype. Not a live or institutional feed."
+}

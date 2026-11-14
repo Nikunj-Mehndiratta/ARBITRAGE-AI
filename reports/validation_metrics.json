@@ -1,0 +1,130 @@
+{
+  "generated_at": "2026-11-14 22:05:57 UTC",
+  "threshold": 0.6,
+  "threshold_source": "highest validation net P&L among thresholds with enough validation trades",
+  "classification_all_candidates": {
+    "n_samples": 377,
+    "base_rate": 0.46153846153846156,
+    "threshold": 0.6,
+    "predicted_positive": 44,
+    "precision": 0.5681818181818182,
+    "recall": 0.14367816091954022,
+    "pr_auc": 0.5259492932302049,
+    "pr_auc_no_skill": 0.46153846153846156,
+    "roc_auc": 0.5292027631504446,
+    "brier_score": 0.2516449838391168,
+    "brier_no_skill": 0.2485207100591716,
+    "confusion_matrix": {
+      "tn": 184,
+      "fp": 19,
+      "fn": 149,
+      "tp": 25
+    }
+  },
+  "classification_entry_zone": {
+    "n_samples": 71,
+    "base_rate": 0.5352112676056338,
+    "threshold": 0.6,
+    "predicted_positive": 19,
+    "precision": 0.631578947368421,
+    "recall": 0.3157894736842105,
+    "pr_auc": 0.6348331210449469,
+    "pr_auc_no_skill": 0.5352112676056338,
+    "roc_auc": 0.5526315789473685,
+    "brier_score": 0.25509751881157977,
+    "brier_no_skill": 0.24876016663360445,
+    "confusion_matrix": {
+      "tn": 26,
+      "fp": 7,
+      "fn": 26,
+      "tp": 12
+    }
+  },
+  "baseline": {
+    "n_trades": 22,
+    "net_pnl": -4422.473137131208,
+    "total_return": -0.04422473137131211,
+    "sharpe_ratio": -0.6377184226648941,
+    "max_drawdown": -0.0748703911887415,
+    "time_in_market": 0.16823899371069181,
+    "sessions": 636,
+    "win_rate": 0.5909090909090909,
+    "avg_trade_return": -0.0020079123500393284,
+    "best_trade_return": 0.014495708173653381,
+    "worst_trade_return": -0.023854732781498435,
+    "profit_factor": 0.534377386738594,
+    "total_costs": 1263.1393242332733,
+    "avg_holding_days": 4.863636363636363,
+    "exit_reasons": {
+      "time": 20,
+      "stop": 1,
+      "reverted": 1
+    }
+  },
+  "hybrid": {
+    "n_trades": 8,
+    "net_pnl": 1125.7103458150523,
+    "total_return": 0.011257103458150564,
+    "sharpe_ratio": 0.260170621060221,
+    "max_drawdown": -0.033818601452844876,
+    "time_in_market": 0.06289308176100629,
+    "sessions": 636,
+    "win_rate": 0.625,
+    "avg_trade_return": 0.0014553119748082041,
+    "best_trade_return": 0.019450225093588045,
+    "worst_trade_return": -0.013948168141547666,
+    "profit_factor": 1.3812133422420907,
+    "total_costs": 478.1249426917899,
+    "avg_holding_days": 5.0,
+    "exit_reasons": {
+      "time": 8
+    }
+  },
+  "threshold_search": [
+    {
+      "threshold": 0.5,
+      "n_trades": 12,
+      "net_pnl": -77.27030408970313,
+      "win_rate": 0.5,
+      "sharpe_ratio": -0.008282207410893383,
+      "max_drawdown": -0.03187545887150289,
+      "eligible": true
+    },
+    {
+      "threshold": 0.55,
+      "n_trades": 10,
+      "net_pnl": 994.7472526578349,
+      "win_rate": 0.6,
+      "sharpe_ratio": 0.21837328154512528,
+      "max_drawdown": -0.03289127510951073,
+      "eligible": true
+    },
+    {
+      "threshold": 0.6,
+      "n_trades": 8,
+      "net_pnl": 1125.7103458150523,
+      "win_rate": 0.625,
+      "sharpe_ratio": 0.260170621060221,
+      "max_drawdown": -0.033818601452844876,
+      "eligible": true
+    },
+    {
+      "threshold": 0.65,
+      "n_trades": 4,
+      "net_pnl": 2720.332392024269,
+      "win_rate": 0.75,
+      "sharpe_ratio": 1.0168551401168573,
+      "max_drawdown": -0.004856072560245561,
+      "eligible": false
+    },
+    {
+      "threshold": 0.7,
+      "n_trades": 0,
+      "net_pnl": 0.0,
+      "win_rate": null,
+      "sharpe_ratio": 0.0,
+      "max_drawdown": 0.0,
+      "eligible": false
+    }
+  ]
+}

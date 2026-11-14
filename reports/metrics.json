@@ -1,0 +1,602 @@
+{
+  "generated_at": "2026-11-14 22:14:51 UTC",
+  "mode": "paper trading only - simulated portfolio, no real orders",
+  "data": {
+    "source": "Yahoo Finance via the yfinance Python package",
+    "yfinance_version": "1.8.0",
+    "retrieved_at_utc": "2026-11-14 22:05:54",
+    "interval": "1d",
+    "requested_start": "2010-01-01",
+    "requested_end": null,
+    "price_field_used": "adj_close (split- and dividend-adjusted)",
+    "tickers": {
+      "KO": {
+        "rows": 4243,
+        "first_date": "2010-01-04",
+        "last_date": "2026-11-13"
+      },
+      "PEP": {
+        "rows": 4243,
+        "first_date": "2010-01-04",
+        "last_date": "2026-11-13"
+      },
+      "XOM": {
+        "rows": 4243,
+        "first_date": "2010-01-04",
+        "last_date": "2026-11-13"
+      },
+      "CVX": {
+        "rows": 4243,
+        "first_date": "2010-01-04",
+        "last_date": "2026-11-13"
+      },
+      "SPY": {
+        "rows": 4243,
+        "first_date": "2010-01-04",
+        "last_date": "2026-11-13"
+      }
+    },
+    "note": "Research dataset for a paper-trading prototype. Not a live or institutional feed.",
+    "quality": {
+      "tickers": {
+        "KO": {
+          "raw_rows": 4243,
+          "duplicate_dates_removed": 0,
+          "invalid_rows_removed": 0
+        },
+        "PEP": {
+          "raw_rows": 4243,
+          "duplicate_dates_removed": 0,
+          "invalid_rows_removed": 0
+        },
+        "XOM": {
+          "raw_rows": 4243,
+          "duplicate_dates_removed": 0,
+          "invalid_rows_removed": 0
+        },
+        "CVX": {
+          "raw_rows": 4243,
+          "duplicate_dates_removed": 0,
+          "invalid_rows_removed": 0
+        },
+        "SPY": {
+          "raw_rows": 4243,
+          "duplicate_dates_removed": 0,
+          "invalid_rows_removed": 0
+        }
+      },
+      "rows_per_ticker_raw": {},
+      "aligned_rows": 4243,
+      "first_date": "2010-01-04",
+      "last_date": "2026-11-13",
+      "max_calendar_gap_days": 5,
+      "suspicious_moves_flagged": {
+        "KO": 0,
+        "PEP": 0,
+        "XOM": 0,
+        "CVX": 1,
+        "SPY": 0
+      },
+      "quality_flagged_rows": 1
+    }
+  },
+  "pair": {
+    "ticker_a": "KO",
+    "ticker_b": "PEP",
+    "decision": {
+      "method": "fallback: lowest Engle-Granger p-value (no pair passed all screens)",
+      "warning": "KO/PEP did not pass: cointegration at p <= 0.05 (Engle-Granger p = 0.170 on training data). The spread is not statistically confirmed to be mean-reverting; treat every result as exploratory.",
+      "pair": [
+        "KO",
+        "PEP"
+      ],
+      "selected_on": "training data only"
+    },
+    "screening": [
+      {
+        "ticker_a": "KO",
+        "ticker_b": "PEP",
+        "return_correlation": 0.6995873820736185,
+        "min_avg_dollar_volume": 499592121.0431819,
+        "coint_pvalue": 0.17017195215560937,
+        "hedge_ratio_beta": 1.2855630856905431,
+        "hedge_r_squared": 0.9388487114312908,
+        "window_pvalues": "[0.8263, 0.1571, 0.3284]",
+        "window_betas": "[0.6311, 1.4994, 1.1741]",
+        "stability_share": 0.0,
+        "passes_correlation": true,
+        "passes_liquidity": true,
+        "passes_cointegration": false,
+        "passes_all": false
+      },
+      {
+        "ticker_a": "XOM",
+        "ticker_b": "CVX",
+        "return_correlation": 0.8324202281014352,
+        "min_avg_dollar_volume": 806906864.7225364,
+        "coint_pvalue": 0.7462380305106645,
+        "hedge_ratio_beta": 0.7073554124694046,
+        "hedge_r_squared": 0.37764355336504485,
+        "window_pvalues": "[0.1886, 0.753, 0.0005]",
+        "window_betas": "[1.2144, 1.3802, 0.5439]",
+        "stability_share": 0.3333333333333333,
+        "passes_correlation": true,
+        "passes_liquidity": true,
+        "passes_cointegration": false,
+        "passes_all": false
+      }
+    ]
+  },
+  "split": {
+    "method": "chronological, no shuffling",
+    "train": {
+      "start": "2010-01-04",
+      "end": "2021-10-19",
+      "sessions": 2970
+    },
+    "validation": {
+      "start": "2021-10-20",
+      "end": "2024-05-01",
+      "sessions": 636
+    },
+    "test": {
+      "start": "2024-05-02",
+      "end": "2026-11-13",
+      "sessions": 637
+    },
+    "embargo_sessions": 6,
+    "embargo_rule": "a sample is used for fitting only if its forward-looking label (1 execution-lag + 5 holding sessions) is fully resolved before the split boundary"
+  },
+  "hedge": {
+    "final": {
+      "ticker_a": "KO",
+      "ticker_b": "PEP",
+      "alpha": -0.19301533129488627,
+      "beta": 1.3043333742511598,
+      "r_squared": 0.9637678486228111,
+      "n_obs": 3606,
+      "fit_start": "2010-01-04",
+      "fit_end": "2024-05-01"
+    },
+    "final_fit_scope": "train + validation",
+    "stage1_train_only": {
+      "ticker_a": "KO",
+      "ticker_b": "PEP",
+      "alpha": -0.13234284719793052,
+      "beta": 1.2855630856905431,
+      "r_squared": 0.9388487114312908,
+      "n_obs": 2970,
+      "fit_start": "2010-01-04",
+      "fit_end": "2021-10-19"
+    },
+    "spread_half_life_sessions_train": 115.50863483227745
+  },
+  "parameters": {
+    "zscore_window": 60,
+    "entry_z": 2.0,
+    "exit_z": 0.5,
+    "stop_z": 3.5,
+    "horizon_days": 5,
+    "execution_lag": 1,
+    "round_trip_cost_fraction_of_gross": 0.0006,
+    "initial_capital": 100000
+  },
+  "model": {
+    "type": "hist_gradient_boosting",
+    "features": [
+      "z_score",
+      "abs_z",
+      "z_change_1d",
+      "z_change_5d",
+      "spread_vol_20",
+      "spread_vol_ratio",
+      "rolling_corr_60",
+      "rolling_beta_120",
+      "rsi_a",
+      "rsi_b",
+      "rel_volume_a",
+      "rel_volume_b",
+      "market_vol_20",
+      "spread_momentum_5"
+    ],
+    "fit_scope": "train + validation",
+    "n_fit_samples": 1898,
+    "fit_base_rate": 0.48524762908324554,
+    "stage1_train_samples": 1508,
+    "probability_threshold": 0.6,
+    "threshold_source": "highest validation net P&L among thresholds with enough validation trades",
+    "outcome_stats": {
+      "avg_win": 0.006970460846689672,
+      "avg_loss": -0.006255143631733174,
+      "n": 406,
+      "scope": "training samples with |z| >= entry threshold"
+    },
+    "risk_limits": {
+      "max_market_vol": 0.29581417507757657,
+      "max_spread_vol": 0.016970732289686936,
+      "min_rolling_corr": 0.2
+    },
+    "feature_importance_validation": [
+      {
+        "feature": "spread_vol_20",
+        "importance": 0.046038876456986955,
+        "std": 0.01861174861663028
+      },
+      {
+        "feature": "rsi_a",
+        "importance": 0.026881597052138696,
+        "std": 0.015431687566602235
+      },
+      {
+        "feature": "spread_momentum_5",
+        "importance": 0.012933097901979069,
+        "std": 0.011916572989387867
+      },
+      {
+        "feature": "abs_z",
+        "importance": 0.012753611945582565,
+        "std": 0.006046780727514312
+      },
+      {
+        "feature": "rolling_corr_60",
+        "importance": 0.01171291716960749,
+        "std": 0.00927325124669607
+      },
+      {
+        "feature": "z_change_1d",
+        "importance": 0.009230279206320153,
+        "std": 0.005466310583602447
+      },
+      {
+        "feature": "spread_vol_ratio",
+        "importance": 0.008571183288898684,
+        "std": 0.011338443047956833
+      },
+      {
+        "feature": "market_vol_20",
+        "importance": 0.0062184425285983,
+        "std": 0.008167510148428765
+      },
+      {
+        "feature": "z_score",
+        "importance": 0.005173427097781696,
+        "std": 0.005750309915230502
+      },
+      {
+        "feature": "rolling_beta_120",
+        "importance": 0.004454995120370042,
+        "std": 0.005254057825352225
+      },
+      {
+        "feature": "z_change_5d",
+        "importance": 0.0015620556734615542,
+        "std": 0.002407824833644843
+      },
+      {
+        "feature": "rsi_b",
+        "importance": -0.002830405452109491,
+        "std": 0.002901124680100295
+      },
+      {
+        "feature": "rel_volume_a",
+        "importance": -0.003216188519917185,
+        "std": 0.009145202808897973
+      },
+      {
+        "feature": "rel_volume_b",
+        "importance": -0.013722351009734091,
+        "std": 0.009008898334242127
+      }
+    ],
+    "trained_at": "2026-11-14 22:05:57 UTC"
+  },
+  "validation": {
+    "classification_all_candidates": {
+      "n_samples": 377,
+      "base_rate": 0.46153846153846156,
+      "threshold": 0.6,
+      "predicted_positive": 44,
+      "precision": 0.5681818181818182,
+      "recall": 0.14367816091954022,
+      "pr_auc": 0.5259492932302049,
+      "pr_auc_no_skill": 0.46153846153846156,
+      "roc_auc": 0.5292027631504446,
+      "brier_score": 0.2516449838391168,
+      "brier_no_skill": 0.2485207100591716,
+      "confusion_matrix": {
+        "tn": 184,
+        "fp": 19,
+        "fn": 149,
+        "tp": 25
+      }
+    },
+    "classification_entry_zone": {
+      "n_samples": 71,
+      "base_rate": 0.5352112676056338,
+      "threshold": 0.6,
+      "predicted_positive": 19,
+      "precision": 0.631578947368421,
+      "recall": 0.3157894736842105,
+      "pr_auc": 0.6348331210449469,
+      "pr_auc_no_skill": 0.5352112676056338,
+      "roc_auc": 0.5526315789473685,
+      "brier_score": 0.25509751881157977,
+      "brier_no_skill": 0.24876016663360445,
+      "confusion_matrix": {
+        "tn": 26,
+        "fp": 7,
+        "fn": 26,
+        "tp": 12
+      }
+    },
+    "baseline": {
+      "n_trades": 22,
+      "net_pnl": -4422.473137131208,
+      "total_return": -0.04422473137131211,
+      "sharpe_ratio": -0.6377184226648941,
+      "max_drawdown": -0.0748703911887415,
+      "time_in_market": 0.16823899371069181,
+      "sessions": 636,
+      "win_rate": 0.5909090909090909,
+      "avg_trade_return": -0.0020079123500393284,
+      "best_trade_return": 0.014495708173653381,
+      "worst_trade_return": -0.023854732781498435,
+      "profit_factor": 0.534377386738594,
+      "total_costs": 1263.1393242332733,
+      "avg_holding_days": 4.863636363636363,
+      "exit_reasons": {
+        "time": 20,
+        "stop": 1,
+        "reverted": 1
+      }
+    },
+    "hybrid": {
+      "n_trades": 8,
+      "net_pnl": 1125.7103458150523,
+      "total_return": 0.011257103458150564,
+      "sharpe_ratio": 0.260170621060221,
+      "max_drawdown": -0.033818601452844876,
+      "time_in_market": 0.06289308176100629,
+      "sessions": 636,
+      "win_rate": 0.625,
+      "avg_trade_return": 0.0014553119748082041,
+      "best_trade_return": 0.019450225093588045,
+      "worst_trade_return": -0.013948168141547666,
+      "profit_factor": 1.3812133422420907,
+      "total_costs": 478.1249426917899,
+      "avg_holding_days": 5.0,
+      "exit_reasons": {
+        "time": 8
+      }
+    },
+    "threshold_search": [
+      {
+        "threshold": 0.5,
+        "n_trades": 12,
+        "net_pnl": -77.27030408970313,
+        "win_rate": 0.5,
+        "sharpe_ratio": -0.008282207410893383,
+        "max_drawdown": -0.03187545887150289,
+        "eligible": true
+      },
+      {
+        "threshold": 0.55,
+        "n_trades": 10,
+        "net_pnl": 994.7472526578349,
+        "win_rate": 0.6,
+        "sharpe_ratio": 0.21837328154512528,
+        "max_drawdown": -0.03289127510951073,
+        "eligible": true
+      },
+      {
+        "threshold": 0.6,
+        "n_trades": 8,
+        "net_pnl": 1125.7103458150523,
+        "win_rate": 0.625,
+        "sharpe_ratio": 0.260170621060221,
+        "max_drawdown": -0.033818601452844876,
+        "eligible": true
+      },
+      {
+        "threshold": 0.65,
+        "n_trades": 4,
+        "net_pnl": 2720.332392024269,
+        "win_rate": 0.75,
+        "sharpe_ratio": 1.0168551401168573,
+        "max_drawdown": -0.004856072560245561,
+        "eligible": false
+      },
+      {
+        "threshold": 0.7,
+        "n_trades": 0,
+        "net_pnl": 0.0,
+        "win_rate": null,
+        "sharpe_ratio": 0.0,
+        "max_drawdown": 0.0,
+        "eligible": false
+      }
+    ]
+  },
+  "test": {
+    "classification_all_candidates": {
+      "n_samples": 430,
+      "base_rate": 0.413953488372093,
+      "threshold": 0.6,
+      "predicted_positive": 39,
+      "precision": 0.41025641025641024,
+      "recall": 0.0898876404494382,
+      "pr_auc": 0.4603598971427495,
+      "pr_auc_no_skill": 0.413953488372093,
+      "roc_auc": 0.5353241483859461,
+      "brier_score": 0.24681830677985395,
+      "brier_no_skill": 0.24259599783666846,
+      "confusion_matrix": {
+        "tn": 229,
+        "fp": 23,
+        "fn": 162,
+        "tp": 16
+      }
+    },
+    "classification_entry_zone": {
+      "n_samples": 98,
+      "base_rate": 0.6020408163265306,
+      "threshold": 0.6,
+      "predicted_positive": 18,
+      "precision": 0.6111111111111112,
+      "recall": 0.1864406779661017,
+      "pr_auc": 0.6838667481456298,
+      "pr_auc_no_skill": 0.6020408163265306,
+      "roc_auc": 0.5788787483702738,
+      "brier_score": 0.24334034413140643,
+      "brier_no_skill": 0.23958767180341525,
+      "confusion_matrix": {
+        "tn": 32,
+        "fp": 7,
+        "fn": 48,
+        "tp": 11
+      }
+    },
+    "calibration": [
+      {
+        "bin": "0.2-0.4",
+        "n": 119,
+        "mean_predicted": 0.3608682664700838,
+        "observed_win_rate": 0.40336134453781514
+      },
+      {
+        "bin": "0.4-0.6",
+        "n": 272,
+        "mean_predicted": 0.47834443062963033,
+        "observed_win_rate": 0.41911764705882354
+      },
+      {
+        "bin": "0.6-0.8",
+        "n": 39,
+        "mean_predicted": 0.6551359602514848,
+        "observed_win_rate": 0.41025641025641024
+      }
+    ],
+    "baseline": {
+      "n_trades": 28,
+      "net_pnl": -2906.7591351241135,
+      "total_return": -0.02906759135124115,
+      "sharpe_ratio": -0.2601644010903065,
+      "max_drawdown": -0.06337080111416915,
+      "time_in_market": 0.21036106750392464,
+      "sessions": 637,
+      "win_rate": 0.5714285714285714,
+      "avg_trade_return": -0.000928905841120904,
+      "best_trade_return": 0.019777354523085416,
+      "worst_trade_return": -0.05571785092370104,
+      "profit_factor": 0.8198589198525282,
+      "total_costs": 1646.831073535617,
+      "avg_holding_days": 4.785714285714286,
+      "exit_reasons": {
+        "time": 24,
+        "stop": 4
+      },
+      "avg_trade_return_ci95": [
+        -0.0073261860402377005,
+        0.004260816629241483
+      ]
+    },
+    "hybrid": {
+      "n_trades": 10,
+      "net_pnl": 3229.1025450170855,
+      "total_return": 0.03229102545017093,
+      "sharpe_ratio": 0.5307148055742243,
+      "max_drawdown": -0.027849633927447548,
+      "time_in_market": 0.07221350078492936,
+      "sessions": 637,
+      "win_rate": 0.6,
+      "avg_trade_return": 0.0032678611581172003,
+      "best_trade_return": 0.025799100122329884,
+      "worst_trade_return": -0.014812297705890718,
+      "profit_factor": 1.7485185437573372,
+      "total_costs": 605.4305509239466,
+      "avg_holding_days": 4.6,
+      "exit_reasons": {
+        "time": 9,
+        "stop": 1
+      },
+      "avg_trade_return_ci95": [
+        -0.004729243010242943,
+        0.011518867758798077
+      ]
+    },
+    "error_analysis": {
+      "decision_attribution": [
+        {
+          "hybrid_decision": "rejected",
+          "n_signals": 80,
+          "win_rate": 0.6,
+          "avg_net_return": 0.000921643933490774,
+          "sum_net_return": 0.07373151467926192
+        },
+        {
+          "hybrid_decision": "accepted",
+          "n_signals": 18,
+          "win_rate": 0.6111111111111112,
+          "avg_net_return": 0.0037019102509016195,
+          "sum_net_return": 0.06663438451622915
+        }
+      ],
+      "rejection_reasons": {
+        "model probability below threshold": 72,
+        "risk filter: market volatility too high": 8
+      },
+      "false_positive_signals": 7,
+      "accepted_signals": 18,
+      "by_abs_z_bucket": [
+        {
+          "abs_z_bucket": "1-1.5",
+          "n": 190,
+          "observed_win_rate": 0.2894736842105263,
+          "mean_predicted_probability": 0.4511871914776257,
+          "avg_net_return": -0.006399613878719959
+        },
+        {
+          "abs_z_bucket": "1.5-2",
+          "n": 142,
+          "observed_win_rate": 0.4507042253521127,
+          "mean_predicted_probability": 0.44273519833661495,
+          "avg_net_return": -0.0031372352201874524
+        },
+        {
+          "abs_z_bucket": "2-2.5",
+          "n": 65,
+          "observed_win_rate": 0.6,
+          "mean_predicted_probability": 0.4988659184279049,
+          "avg_net_return": 0.0009420807008696444
+        },
+        {
+          "abs_z_bucket": "2.5-3.5",
+          "n": 33,
+          "observed_win_rate": 0.6060606060606061,
+          "mean_predicted_probability": 0.5328200620801602,
+          "avg_net_return": 0.0023978985951201275
+        }
+      ],
+      "note": "Attribution is per signal-day in the entry zone (overlapping hypothetical trades), so counts exceed the number of sequential backtest trades."
+    }
+  },
+  "latest": {
+    "date": "2026-11-13",
+    "price_a": 99.25,
+    "price_b": 145.44000244140625,
+    "spread": -0.8240788200373945,
+    "z_score": -1.0581003417632135,
+    "z_reading": "inside normal range",
+    "probability": 0.45893103963836535,
+    "expected_net_return": -0.00018550321860475675,
+    "signal": "NO_TRADE",
+    "reason": "|z| below entry threshold 2"
+  },
+  "caveats": [
+    "Statistical arbitrage is not risk-free: related stocks can stay mispriced or diverge further.",
+    "One pair, daily bars, a few dozen test trades: every number has wide uncertainty.",
+    "Costs are a flat bps assumption; short-borrow fees, dividends on shorts and market impact are not modelled.",
+    "Labels from consecutive days overlap, so samples are not independent.",
+    "This is a research prototype for paper trading. It is not investment advice."
+  ]
+}

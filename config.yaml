@@ -1,0 +1,64 @@
+# ARBITRAGE AI - experiment configuration
+# Every number here is an experimental starting point, not a market law.
+# Nothing in this file may be tuned by looking at the final test period.
+
+project:
+  name: ARBITRAGE AI
+  mode: paper_trading_only        # no broker connection exists anywhere in this code
+
+data:
+  source: yfinance                # Yahoo Finance daily bars (research data, not an institutional feed)
+  start_date: "2010-01-01"
+  end_date: null                  # null = up to the most recent session at download time
+  candidate_pairs:                # [A, B]; the spread is  ln(B) - alpha - beta * ln(A)
+    - [KO, PEP]
+    - [XOM, CVX]
+  market_ticker: SPY              # used only for the market-volatility feature
+  raw_dir: data/raw
+  processed_dir: data/processed
+  max_abs_daily_return: 0.25      # larger moves are flagged as suspect data
+
+split:                            # chronological, never shuffled
+  train_frac: 0.70
+  val_frac: 0.15                  # the remaining 0.15 is the final test period
+
+pair_selection:                   # evaluated on TRAINING data only
+  force_pair: null                # e.g. [KO, PEP] to skip automatic selection
+  min_return_correlation: 0.50
+  max_coint_pvalue: 0.05          # Engle-Granger
+  min_avg_dollar_volume: 50000000
+  stability_windows: 3            # sub-windows of the training period for the stability check
+  stability_pvalue: 0.10
+
+statistical:
+  zscore_window: 60               # sessions for the rolling mean / std of the spread
+  entry_z: 2.0
+  exit_z: 0.5
+  stop_z: 3.5
+
+trading:
+  horizon_days: 5                 # maximum holding period (sessions)
+  execution_lag: 1                # signal at close t is filled at close t + lag (0 = same close)
+  commission_bps: 1.0             # per side, per leg, on traded notional
+  slippage_bps: 2.0               # per side, per leg, on traded notional
+  initial_capital: 100000
+  gross_exposure: 1.0             # gross notional per trade as a fraction of current equity
+
+model:
+  type: hist_gradient_boosting    # hist_gradient_boosting | random_forest | logistic_regression
+  train_min_abs_z: 1.0            # hypothetical trades with |z| above this become training samples
+  probability_threshold: 0.65     # default; replaced by the validation-tuned value if tuning is on
+  tune_threshold_on_validation: true
+  threshold_grid: [0.50, 0.55, 0.60, 0.65, 0.70]
+  min_validation_trades: 5        # a threshold must produce at least this many validation trades
+  refit_on_train_plus_validation: true
+  random_state: 42
+
+risk:                             # limits are fitted on training data only
+  max_market_vol_quantile: 0.95
+  max_spread_vol_quantile: 0.95
+  min_rolling_correlation: 0.20
+
+reports:
+  dir: reports
+  model_dir: models/saved_model

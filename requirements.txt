@@ -1,0 +1,14 @@
+numpy
+pandas
+yfinance
+scikit-learn
+statsmodels
+scipy
+plotly
+streamlit>=1.50
+joblib
+pyyaml
+pytest
+# only needed to rebuild the one-page paper (reports/build_paper.py)
+matplotlib
+reportlab
