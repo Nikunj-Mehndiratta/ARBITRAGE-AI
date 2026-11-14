@@ -6,7 +6,7 @@ project:
   name: ARBITRAGE AI
   mode: paper_trading_only        # no broker connection exists anywhere in this code
   track: AI + Finance             # shown on the write-up (reports/build_paper.py)
-  team: ARBITRAGE AI              # replace with the team members' names
+  team: Nikunj Mehndiratta and Pranav Verma
   repo_url: github.com/Nikunj-Mehndiratta/ARBITRAGE-AI
 
 data:
